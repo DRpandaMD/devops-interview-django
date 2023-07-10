@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: django-app-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: django-app
@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: django-app-container
-        image: mydjangoapp:latest
+        # NOTE: will have to set up GCR and push this image up there to get kubernetes to pull this image.
+        image: mydjangoapp:01
         ports:
         - containerPort: 8000
         resources:
